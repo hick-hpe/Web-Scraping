@@ -13,7 +13,6 @@ Segue o passo a passo:
 
 - **Executar o arquivo de exemplo**:
     ```
-    cd web-scraping-simples
     python ws-simples.py
     ```
 
