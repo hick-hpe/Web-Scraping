@@ -1,6 +1,6 @@
 # Web Scraping Dinâmico
 
-A raspagem de dados dinâmica atua em sites nos quais os conteúdos não estão diretamente no HTML, mas sim gerados dinamicamente pelo JavaScript. Para esta abordagem, utilizaremos as bibliotecas `BeatifullSoup`.
+A raspagem de dados dinâmica atua em sites nos quais os conteúdos não estão diretamente no HTML, mas sim gerados dinamicamente pelo JavaScript. Para esta abordagem, utilizaremos as bibliotecas `selenium` e `webdriver-manager`.
 
 ## Prática do Web Scraping
 
