@@ -25,41 +25,44 @@ import requests
 from bs4 import BeautifulSoup
 ```
 
-### 2. Tratamento de erro:
+### 2. Acessanco o site:
 ```python
 try:
-    # código que tentará ser executado
-except requests.exceptions.RequestException as e:
-    # caso lance uma exceção (erro)
+    url = "https://quotes.toscrape.com"
+    resposta = requests.get(url)
+
+    # lançar uma exeção se status_code != 200
+    resposta.raise_for_status()
 ```
 
-### 3. Definimos a url:
-```python
-url = "https://quotes.toscrape.com"
-```
-
-### 4. Fazemos a requisição:
-```python
-resposta = requests.get(url)
-resposta.raise_for_status()
-```
-
-### 5. Converte o conteúdo HTML da página em um objeto BeautifulSoup:
+### 3. Converte o conteúdo HTML da página em um objeto BeautifulSoup:
 ```python
 pagina = BeautifulSoup(resposta.text, 'html.parser')
 ```
 
-### 6. Busca todas as divs que contêm citações:
+### 4. Busca todas as divs que contêm citações:
 ```python
 citacoes = pagina.find_all('div', class_='quote')
 ```
 
-### 7. Exibir as citações:
+### 5. Exibir as citações:
 ```python
 for citacao in citacoes:
     texto = citacao.find('span', class_='text').get_text()
     autor = citacao.find('small', class_='author').get_text()
     print(f"Citação: {texto}\nAutor: {autor}\n")
+```
+
+### 6. Explcação:
+Esse bloco captura possíveis erros durante a requisição HTTP, como:
+- Problemas de conexão
+- URL inválida
+- Resposta com status de erro (4xx ou 5xx)
+
+```python
+except requests.exceptions.RequestException as e:
+    # Captura exceções de rede ou HTTP e exibe a mensagem de erro
+    print("Erro ao acessar a página:", e)
 ```
 
 ## Filtrar os elementos
