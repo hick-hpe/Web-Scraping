@@ -103,11 +103,22 @@ Em vez disso, usamos os métodos de localização fornecidos pela biblioteca `By
 
     Pode ser usado tanto para HTML quanto XML.
 
-    Algumas opções de filtros com XPATH:
-    - `string-length()`: medir comprimento do texto
-    - `contains()`: buscar substrings
-    - `starts-with()`: filtrar prefixos
-    - `normalize-space()`: remover espaços extras antes de contar caracteres
+    Alguns opções de filtros com XPATH:
+
+    | Filtro               | Explicação                                                | Exemplo                                                                 |
+    |----------------------|------------------------------------------------------------|-------------------------------------------------------------------------|
+    | `string-length()`     | Mede o comprimento do texto                              | `//span[@class='text' and string-length(text()) <= 100]`                |
+    | `contains()`          | Verifica se o texto ou atributo contém uma substring     | `//span[contains(text(), 'vida')]`                                      |
+    | `starts-with()`       | Filtra elementos cujo texto ou atributo começa com prefixo | `//input[starts-with(@name, 'user')]`                                   |
+    | `normalize-space()`   | Remove espaços extras do início, fim e múltiplos espaços internos | `//div[normalize-space(text())='Exemplo']`|
+    | `substring()`         | Retorna parte da string a partir de uma posição inicial   | `//span[substring(text(), 1, 4)='Cita']`                                |
+    | `position()`          | Retorna a posição do nó dentro do conjunto de resultados | `(//li)[position()=1]` (primeiro item da lista)                         |
+    | `last()`              | Seleciona o último elemento do conjunto                   | `(//li)[last()]` (último item da lista)                                 |
+    | `not()`               | Retorna nós que não atendem à condição especificada       | `//div[not(@class='hidden')]`                                           |
+    | `and`, `or`           | Operadores lógicos para combinar múltiplas condições      | `//input[@type='text' and @name='username']`                            |
+
+    
+    Nota: use `@atributo` para se referir aos atributos.
 
 ### Buscando as citações curtas
 

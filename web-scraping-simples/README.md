@@ -1,6 +1,6 @@
 # Web Scraping Simples
 
-A raspagem de dados simples atua em sites nos quais os conteúdos estão todos no próprio HTML, de forma estática. Para esta abordagem, utilizaremos as bibliotecas `BeatifullSoup`.
+A raspagem de dados simples atua em sites nos quais os conteúdos estão todos no próprio HTML, de forma estática. Para esta abordagem, utilizaremos as bibliotecas `requests` e `BeatifullSoup`.
 
 ## Prática do Web Scraping
 
