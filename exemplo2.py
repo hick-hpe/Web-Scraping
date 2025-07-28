@@ -1,6 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
+
+# função para raspar citações curtas
+def get_citacao_curtas(tag):
+    return (
+        tag.name == 'span' and len(tag.get_text()) < 100
+    )
+
 try:
     # URL do site que será raspado
     url = "https://quotes.toscrape.com"
@@ -15,11 +22,17 @@ try:
     # Encontrando todas as citações na página
     citacoes = pagina.find_all('div', class_='quote')
 
-    # Exibindo as citações encontradas
+    # Exibindo as citações encontradas que não contenham o texto 'be'
     for citacao in citacoes:
-        texto = citacao.find('span', class_='text').get_text()
         autor = citacao.find('small', class_='author').get_text()
-        print(f"Citação: {texto}\nAutor: {autor}\n")
+
+        # utilizando uma função para filtrar citações curtas
+        texto = citacao.find(get_citacao_curtas).get_text()
+        
+        if not texto:
+            continue
+        print(f"Citação: {texto}\nAutor: {autor}\n")    
 
 except requests.exceptions.RequestException as e:
     print("Erro ao acessar a página:", e)
+

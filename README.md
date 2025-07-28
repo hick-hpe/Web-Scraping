@@ -7,7 +7,7 @@ Web Scraping é a automatização da coleta de dados de websites, convertendo-os
 Segue o passo a passo:
 
 - Escolha do site:
-    Para exemplififcar, foi escolhido o site [https://quotes.toscrape.com](https://quotes.toscrape.com), que é o recomendado para essa finalidade.
+    Para exemplificar, foi escolhido o site [https://quotes.toscrape.com](https://quotes.toscrape.com), que é o recomendado para essa finalidade.
 
 - Clone o repositório:
     ```
@@ -18,7 +18,28 @@ Segue o passo a passo:
     ```
     pip install requests beautifulsoup4 
     ```
-- Executar arquivo de exemplo:
+- Executar o arquivo de exemplo:
     ```
     python exemplo1.py
+    ```
+
+## Explicação do arquivo
+
+- Importação das bibliotecas:
+    ```python
+    import requests
+    from bs4 import BeautifulSoup
+    ```
+
+- Tratamento de erro:
+    ```python
+    try:
+        # código que tentará ser executado
+    except requests.exceptions.RequestException as e:
+        # caso lance uma exceção (erro)
+    ```
+
+- Definimos a url:
+    ```python
+    url = "https://quotes.toscrape.com"
     ```
